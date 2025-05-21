@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    min-height: 100vh;
+}
+
+::placeholder{
+    font-weight: 600 !important; 
+}
