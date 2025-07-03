@@ -27,10 +27,9 @@
                         <thead>
                             <tr>
                                 <th style="width: 3%">No</th>
-                                <th>Nama Lengkap</th>
                                 <th>NISN</th>
-                                <th>Nilai Akhir</th>
-                                <th>Keterangan</th>
+                                <th>Nama Lengkap</th>
+
                                 <th width="15%">Action</th>
                             </tr>
                         </thead>
@@ -38,10 +37,9 @@
                             @foreach ($alternatifs as $alternatif)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $alternatif->nama_lengkap }}</td>
                                 <td>{{ $alternatif->nisn }}</td>
-                                <td>{{ $alternatif->nilai_akhir ?? '-' }}</td>
-                                <td>{{ $alternatif->keterangan_lulus ?? '-' }}</td>
+                                <td>{{ $alternatif->nama_lengkap }}</td>
+
                                 <td>
                                     <div class="d-flex justify-content-center">
                                         @if (Auth::user()->role != 'Juri')

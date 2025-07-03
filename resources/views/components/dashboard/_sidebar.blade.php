@@ -16,7 +16,7 @@
     </li>
 
     <hr class="sidebar-divider">
-    @if (Auth::user()->role != 'Admin')
+
     <!-- Heading -->
     <div class="sidebar-heading">
         Master Data
@@ -82,7 +82,6 @@
             <span>User</span>
         </a>
     </li>
-    @endif
     @endif
 
     <!-- <li class="nav-item {{ $page === 'profile' ? 'active' : '' }}">

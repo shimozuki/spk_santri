@@ -26,11 +26,13 @@ use App\Models\Hasil;
                     @else
                     <button class="btn btn-secondary" disabled>Belum Disetujui</button>
                     @endif
+                    @if (Auth::user()->role == 'Kepsek')
                     @if ($hasils->first() && $hasils->first()->status !== 'Disetujui')
                     <form action="{{ route('laporan.setujui') }}" method="POST" onsubmit="return confirm('Yakin ingin menyetujui hasil pemeringkatan?')">
                         @csrf
                         <button type="submit" class="btn btn-success">Setujui Pemeringkatan</button>
                     </form>
+                    @endif
                     @endif
                 </h5>
             </div>

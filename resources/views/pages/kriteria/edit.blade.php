@@ -63,7 +63,7 @@
                                     <input type="number" name="bobot" id="bobot"
                                         class="form-control @error('bobot') is-invalid @enderror"
                                         value="{{ old('bobot', $kriterium->bobot ?? '') }}"
-                                        step="0.01" min="0" max="1" required>
+                                        step="0.01" min="0" max="10" required>
                                     @error('nilai')
                                     <div class="invalid-feedback">
                                         {{ $message }}

@@ -14,8 +14,8 @@
     <div class="container ">
         <div class="mb-4">
             <div class="col-12 mt-5 mb-5 text-center">
-                <h4 class="font-weight-bold">LAPORAN HASIL ANALISA PILMAPRES IIB DARMAJAYA {{ date('Y') }}</h4>
-                <h4 class="font-weight-bold">METODE PROFILE MATCHING & BUBBLE SORT</h4>
+                <h4 class="font-weight-bold">LAPORAN HASIL KELULUSAN SANTRI {{ date('Y') }}</h4>
+                <h4 class="font-weight-bold">METODE PROFILE MATCHING</h4>
                 @include('layouts.alert')
             </div>
             <section class="section mb-5">
@@ -25,9 +25,8 @@
                         <thead>
                             <tr align="center">
                                 <th style="width: 3%">No</th>
+                                <th>NISN</th>
                                 <th>Nama</th>
-                                <th>NPM</th>
-                                <th>Jurusan</th>
                                 <th>Total </th>
                             </tr>
                         </thead>
@@ -36,9 +35,8 @@
                             @foreach ($hasils as $hasil)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td>{{ $hasil->alternatif->nisn }}</td>
                                 <td>{{ $hasil->alternatif->nama_lengkap }}</td>
-                                <td>{{ $hasil->alternatif->npm }}</td>
-                                <td>{{ $hasil->alternatif->jurusan }}</td>
                                 <td>{{ $hasil->nilai }}</td>
                             </tr>
                             @endforeach
@@ -50,14 +48,14 @@
 
             </section>
             <div class="d-flex justify-content-end">
-                Bandar Lampung, {{ date('D m Y') }}
+                Sumbawa, {{ date('D m Y') }}
                 <br>
-                Wakil Rektor III IIB Darmajaya
-                <br>
-                <br>
+                Kepala Sekolah
                 <br>
                 <br>
-                Muprihan Thaib, S.Sos., M.M
+                <br>
+                <br>
+                Rodianto, S.kom., M.kom
                 <br>
                 NIK. 13370514
             </div>

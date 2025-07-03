@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Kriteria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class KriteriaController extends Controller
 {
@@ -58,24 +60,37 @@ class KriteriaController extends Controller
     /**
      * Update the specified resource in storage.
      */
+
+
     public function update(Request $request, Kriteria $kriterium)
     {
-        $request->validate([
-            'code' => 'required|string|max:10',
-            'name' => 'required|string|max:255|unique:kriterias,nama,' . $kriterium->id,
-            'tipe' => 'required|in:core,secondary',
-            'nilai' => 'required|numeric|min:0|max:1',
-        ]);
+        try {
+            $request->validate([
+                'code' => 'required|string|max:10',
+                'name' => 'required|string|max:255|unique:kriterias,nama,' . $kriterium->id,
+                'tipe' => 'required',
+                'bobot' => 'required|numeric|min:0',
+            ]);
 
-        $kriterium->update([
-            'kode_kriteria' => $request->code,
-            'nama' => $request->name,
-            'type' => $request->tipe,
-            'bobot' => $request->nilai,
-        ]);
+            $kriterium->update([
+                'kode_kriteria' => $request->code,
+                'nama' => $request->name,
+                'type' => $request->tipe,
+                'bobot' => $request->bobot,
+            ]);
 
-        return Redirect::route('kriteria.index')->with('success', 'Kriteria berhasil diubah.');
+            return Redirect::route('kriteria.index')->with('success', 'Kriteria berhasil diubah.');
+        } catch (\Throwable $e) {
+            Log::error('Update kriteria gagal: ' . $e->getMessage(), [
+                'stack' => $e->getTraceAsString(),
+                'request' => $request->all(),
+            ]);
+
+            return back()->withErrors(['update_error' => 'Gagal mengubah data. Silakan periksa log.']);
+        }
     }
+
+
 
 
     /**
