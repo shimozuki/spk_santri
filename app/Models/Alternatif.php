@@ -11,19 +11,10 @@ class Alternatif extends Model
 
     protected $fillable = [
         'user_id',
-        'npm',
-        'jurusan',
-        'no_telp',
-        'semester1',
-        'semester2',
-        'semester3',
-        'semester4',
-        'semester5',
-        'semester6',
-        'prestasi',
-        'pas_foto',
-        'foto_ktp',
-        'karya_tulis',
+        'nama_lengkap',
+        'nisn',
+        'nilai_akhir',
+        'keterangan_lulus',
     ];
 
     public function user()

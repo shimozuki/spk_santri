@@ -61,21 +61,22 @@ class KriteriaController extends Controller
     public function update(Request $request, Kriteria $kriterium)
     {
         $request->validate([
-            'code' => 'required',
-            'name' => 'required|unique:kriterias,nama,' . $kriterium->id,
-            'tipe' => 'required',
-            'nilai' => 'required',
+            'code' => 'required|string|max:10',
+            'name' => 'required|string|max:255|unique:kriterias,nama,' . $kriterium->id,
+            'tipe' => 'required|in:core,secondary',
+            'nilai' => 'required|numeric|min:0|max:1',
         ]);
 
         $kriterium->update([
             'kode_kriteria' => $request->code,
             'nama' => $request->name,
             'type' => $request->tipe,
-            'bobot' => $request->nilai
+            'bobot' => $request->nilai,
         ]);
 
-        return Redirect::route('kriteria.index')->with('success', 'Kriteria berhasil di ubahs');
+        return Redirect::route('kriteria.index')->with('success', 'Kriteria berhasil diubah.');
     }
+
 
     /**
      * Remove the specified resource from storage.

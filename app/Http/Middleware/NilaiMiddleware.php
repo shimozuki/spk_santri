@@ -17,7 +17,7 @@ class NilaiMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->role != 'Admin' && Auth::user()->role != 'Juri') {
+        if (Auth::user()->role != 'Admin' && Auth::user()->role != 'Guru') {
             return Redirect::back();
         }
         return $next($request);

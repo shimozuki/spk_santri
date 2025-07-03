@@ -52,3 +52,4 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('laporan', LaporanController::class)->middleware('App\Http\Middleware\AlternatifMiddleware');
     Route::resource('users', UserContoller::class)->middleware('App\Http\Middleware\UserMiddleware');;
 });
+Route::post('/laporan/setujui', [LaporanController::class, 'setujui'])->name('laporan.setujui');

@@ -16,6 +16,7 @@ class LaporanController extends Controller
     {
         $page = 'laporan';
         $hasils = Hasil::all();
+        $bolehCetak = $hasils->contains('status', 'Disetujui');
 
         $n = $hasils->count();
         for ($i = 0; $i < $n - 1; $i++) {
@@ -31,6 +32,7 @@ class LaporanController extends Controller
         return view('pages.laporan.index', compact(
             'page',
             'hasils',
+            'bolehCetak',
         ));
     }
 
@@ -86,5 +88,13 @@ class LaporanController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function setujui()
+    {
+        // Setujui semua hasil (atau hanya baris pertama jika hanya satu baris yang disetujui)
+        Hasil::query()->update(['status' => 'Disetujui']);
+
+        return redirect()->route('laporan.index')->with('success', 'Pemeringkatan berhasil disetujui.');
     }
 }
