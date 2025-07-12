@@ -13,9 +13,13 @@ class Alternatif extends Model
         'user_id',
         'nama_lengkap',
         'nisn',
+        'nis',
+        'kelas',
+        'tahun_ajaran',
         'nilai_akhir',
         'keterangan_lulus',
     ];
+
 
     public function user()
     {

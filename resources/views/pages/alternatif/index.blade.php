@@ -27,9 +27,11 @@
                         <thead>
                             <tr>
                                 <th style="width: 3%">No</th>
+                                <th>NIS</th>
                                 <th>NISN</th>
                                 <th>Nama Lengkap</th>
-
+                                <th>Kelas</th>
+                                <th>Tahun Ajaran</th>
                                 <th width="15%">Action</th>
                             </tr>
                         </thead>
@@ -37,9 +39,11 @@
                             @foreach ($alternatifs as $alternatif)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td>{{ $alternatif->nis ?? '-' }}</td>
                                 <td>{{ $alternatif->nisn }}</td>
                                 <td>{{ $alternatif->nama_lengkap }}</td>
-
+                                <td>{{ $alternatif->kelas ?? '-' }}</td>
+                                <td>{{ $alternatif->tahun_ajaran ?? '-' }}</td>
                                 <td>
                                     <div class="d-flex justify-content-center">
                                         @if (Auth::user()->role != 'Juri')

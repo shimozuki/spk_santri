@@ -42,7 +42,11 @@ use App\Models\Hasil;
                         <thead>
                             <tr align="center">
                                 <th>Peringkat</th>
+                                <th>NISN</th>
+                                <th>NIS</th>
                                 <th>Nama</th>
+                                <th>Kelas</th>
+                                <th>Tahun Ajaran</th>
                                 <th>Total Nilai</th>
                             </tr>
                         </thead>
@@ -55,13 +59,17 @@ use App\Models\Hasil;
                             @foreach ($hasil_terurut as $hasil)
                             <tr>
                                 <td>{{ $peringkat++ }}</td>
+                                <td>{{ $hasil->alternatif->nisn ?? '-' }}</td>
+                                <td>{{ $hasil->alternatif->nis ?? '-' }}</td>
                                 <td>{{ $hasil->alternatif->nama_lengkap }}</td>
+                                <td>{{ $hasil->alternatif->kelas ?? '-' }}</td>
+                                <td>{{ $hasil->alternatif->tahun_ajaran ?? '-' }}</td>
                                 <td>{{ number_format($hasil->nilai, 2) }}</td>
                             </tr>
                             @endforeach
                         </tbody>
-
                     </table>
+
                 </div>
             </div>
         </div>

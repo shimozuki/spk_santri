@@ -39,6 +39,39 @@
                                     </div>
                                     @enderror
                                 </div>
+
+                                <div class="form-group col-12 col-lg-6">
+                                    <label for="nis" class="form-label">NIS</label>
+                                    <input type="text" name="nis" id="nis"
+                                        class="form-control @error('nis') is-invalid @enderror">
+                                    @error('nis')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group col-12 col-lg-6">
+                                    <label for="kelas" class="form-label">Kelas</label>
+                                    <input type="text" name="kelas" id="kelas"
+                                        class="form-control @error('kelas') is-invalid @enderror">
+                                    @error('kelas')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group col-12 col-lg-6">
+                                    <label for="tahun_ajaran" class="form-label">Tahun Ajaran</label>
+                                    <input type="text" name="tahun_ajaran" id="tahun_ajaran" placeholder="Contoh: 2024/2025"
+                                        class="form-control @error('tahun_ajaran') is-invalid @enderror">
+                                    @error('tahun_ajaran')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
                             </div>
 
                             <div class="form-group mt-4">

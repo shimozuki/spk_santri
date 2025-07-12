@@ -31,17 +31,24 @@ class AlternatifController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_lengkap' => 'required|string|max:255',
-            'nisn' => 'required|numeric|unique:alternatifs,nisn',
+            'nama_lengkap'   => 'required|string|max:255',
+            'nisn'           => 'required|numeric|unique:alternatifs,nisn',
+            'nis'            => 'nullable|string|max:50',
+            'kelas'          => 'nullable|string|max:50',
+            'tahun_ajaran'   => 'nullable|string|max:10',
         ]);
 
         Alternatif::create([
-            'nama_lengkap' => $request->nama_lengkap,
-            'nisn' => $request->nisn,
+            'nama_lengkap'   => $request->nama_lengkap,
+            'nisn'           => $request->nisn,
+            'nis'            => $request->nis,
+            'kelas'          => $request->kelas,
+            'tahun_ajaran'   => $request->tahun_ajaran,
         ]);
 
         return Redirect::route('alternatif.index')->with('success', 'Data santri berhasil ditambahkan.');
     }
+
 
 
     /**
@@ -65,17 +72,24 @@ class AlternatifController extends Controller
     public function update(Request $request, Alternatif $alternatif)
     {
         $request->validate([
-            'nama_lengkap' => 'required|string|max:255',
-            'nisn' => 'required|numeric|unique:alternatifs,nisn,' . $alternatif->id,
+            'nama_lengkap'   => 'required|string|max:255',
+            'nisn'           => 'required|numeric|unique:alternatifs,nisn,' . $alternatif->id,
+            'nis'            => 'nullable|string|max:50',
+            'kelas'          => 'nullable|string|max:50',
+            'tahun_ajaran'   => 'nullable|string|max:10',
         ]);
 
         $alternatif->update([
-            'nama_lengkap' => $request->nama_lengkap,
-            'nisn' => $request->nisn,
+            'nama_lengkap'   => $request->nama_lengkap,
+            'nisn'           => $request->nisn,
+            'nis'            => $request->nis,
+            'kelas'          => $request->kelas,
+            'tahun_ajaran'   => $request->tahun_ajaran,
         ]);
 
         return Redirect::route('alternatif.index')->with('success', 'Data santri berhasil diubah.');
     }
+
 
 
     /**
