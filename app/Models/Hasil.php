@@ -11,7 +11,8 @@ class Hasil extends Model
 
     protected $fillable = [
         'alternatif_id',
-        'nilai'
+        'nilai',
+        'tahun'
     ];
 
     public function alternatif()

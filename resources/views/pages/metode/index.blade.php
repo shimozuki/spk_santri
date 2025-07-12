@@ -410,6 +410,7 @@ use App\Models\Hasil;
                             Hasil::create([
                             'alternatif_id' => $alternatif->id,
                             'nilai' => (($ncf / $tcf) * 60 + ($nsf / $tsf) * 40) / 100,
+                            'tahun' => $alternatif->tahun_ajaran
                             ]);
                             @endphp
                             @endif
