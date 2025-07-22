@@ -13,22 +13,31 @@ class MetodeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $page = 'metode';
+
+        $tahunList = Alternatif::query()
+            ->select('tahun_ajaran')
+            ->distinct()
+            ->orderByDesc('tahun_ajaran')
+            ->pluck('tahun_ajaran');
+
+
+        $tahunAjaran = $request->input('tahun_ajaran', $tahunList->first());
         Hasil::truncate();
 
-        $page = 'metode';
         $kriterias = Kriteria::orderBy('kode_kriteria', 'asc')->get();
-        $alternatifs = Alternatif::orderBy('id')->get();
-
-        // $pemetaanGap = [];
-        // foreach($alternatifs as )
-
+        $alternatifs = Alternatif::where('tahun_ajaran', $tahunAjaran)
+            ->orderBy('id')
+            ->get();
 
         return view('pages.metode.index', compact(
             'page',
             'kriterias',
-            'alternatifs'
+            'alternatifs',
+            'tahunList',
+            'tahunAjaran'
         ));
     }
 

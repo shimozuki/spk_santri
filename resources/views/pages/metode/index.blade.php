@@ -14,6 +14,31 @@ use App\Models\Hasil;
         <p class="text-subtitle text-muted">Hasil Analisa Metode Profile Matching.</p>
         @include('layouts.alert')
     </div>
+    <div class="col-12 mb-3">
+        <form method="GET" action="{{ route('metode.index') }}" class="row g-3 align-items-end">
+            <div class="form-group col-12 col-lg-6 col-xl-4">
+                <label for="tahun_ajaran" class="form-label">Tahun Ajaran</label>
+                <select name="tahun_ajaran" id="tahun_ajaran"
+                    class="form-select @error('tahun_ajaran') is-invalid @enderror form-control"
+                    onchange="this.form.submit()">
+                    @foreach($tahunList as $tahun)
+                    <option value="{{ $tahun }}" @selected(old('tahun_ajaran', $tahunAjaran)==$tahun)>
+                        {{ $tahun }}
+                    </option>
+                    @endforeach
+                </select>
+                @error('tahun_ajaran')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <noscript>
+                <div class="col-12 col-lg-2">
+                    <button type="submit" class="btn btn-primary btn-sm mt-2 mt-lg-0">Tampilkan</button>
+                </div>
+            </noscript>
+        </form>
+    </div>
     <section class="section">
         <div class="card">
             <div class="card-header">

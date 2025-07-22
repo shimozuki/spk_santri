@@ -67,8 +67,8 @@
                             <button name="submit" type="submit" class="btn btn-primary btn-user btn-block mt-3">
                                 Masuk</button>
                             <div class="text-center mt-3">
-                                <a href="{{ route('password.request') }}"
-                                    class="fw-bold text-decoration-none text-color">Lupa password ?</a>
+                                <!-- <a href="{{ route('password.request') }}"
+                                    class="fw-bold text-decoration-none text-color">Lupa password ?</a> -->
                                 <p class="fs-6 fw-light">Belum punya akun ?
                                     <a href="{{ route('register') }}"
                                         class="fw-light text-decoration-none text-color">Daftar</a>
